@@ -1,0 +1,37 @@
+/* Header Styles */
+.page-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header-with-icon h1 {
+    margin-bottom: 0.5rem;
+}
+
+.header-icon {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.header-title {
+    margin-left: 0.5rem;
+}
+
+.header-title-gradient {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.header-title-plain {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.header-description {
+    font-size: 1.5rem;
+    color: #64748b;
+    max-width: 700px;
+    margin: 1rem auto 0;
+    line-height: 1.6;
+}

@@ -1,0 +1,31 @@
+# NOTE: currently not in use. Hardcoded in `start_server.sh`. It should be updated later.
+models:
+  qwen3-4b-it:
+    path: "./models/Qwen3-4B-Instruct-2507"
+    max_model_len: 4096
+    reasoning: false
+    gpu_memory_utilization: 0.75
+    max_num_seqs: 64
+
+  qwen3-30b-it:
+    path: "./models/Qwen3-30B-A3B-Instruct-2507"
+    max_model_len: 32768
+    reasoning: false
+    gpu_memory_utilization: 0.75
+    max_num_seqs: 4
+
+  qwen3-30b-it-thinking:
+    path: "./models/Qwen3-30B-A3B-Thinking-2507"
+    max_model_len: 32768
+    reasoning: true
+    enable_reasoning: true
+    gpu_memory_utilization: 0.9
+    max_num_seqs: 8
+
+vllm:
+  host: "127.0.0.1"
+  port: 8100
+  dtype: "auto"
+  tensor_parallel_size: 1
+  enable_prefix_caching: true
+

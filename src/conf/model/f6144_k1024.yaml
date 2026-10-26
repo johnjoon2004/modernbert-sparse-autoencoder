@@ -1,0 +1,31 @@
+name: f6144_k1024
+
+args:
+  _target_: src.sae.SparseAutoencoder
+  architecture: topk
+  input_dim: 768
+  feature_dim: 6144
+  topk: 1024
+  apply_tied_weights: false
+  apply_unit_norm: true
+  apply_transpose_init: true
+  apply_preprocessing: true
+  init_scale: 1.0
+  encoder_bias: true
+  decoder_bias: false
+  preprocess_warmup_steps: 300
+  ema_decay: 0.999
+  apply_auxiliary_loss: false
+  alpha_aux: 0.0
+
+loss:
+  _target_: src.sae.SAELoss
+  reconstruction_weight: 1.0
+  l1_weight: 0.0
+  auxiliary_weight: ${model.args.alpha_aux}
+
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 5e-5
+  betas: [0.9, 0.999]
+  weight_decay: 0.0

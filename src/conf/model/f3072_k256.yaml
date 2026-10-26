@@ -1,0 +1,36 @@
+name: f3072_k256
+
+args:
+  _target_: src.sae.SparseAutoencoder
+  architecture: topk
+  input_dim: 768
+  feature_dim: 3072
+  topk: 256
+  apply_tied_weights: false
+  apply_unit_norm: true
+  apply_transpose_init: true
+  apply_preprocessing: true
+  init_scale: 1.0
+  encoder_bias: true
+  decoder_bias: false
+  preprocess_warmup_steps: 300
+  ema_decay: 0.999
+  apply_auxiliary_loss: true
+  k_aux: 512
+  alpha_aux: 0.03125
+  feature_scope: sample
+  threshold_activation: -999.0
+  threshold_dead_steps: 39
+  min_alive_neurons: 32
+
+loss:
+  _target_: src.sae.SAELoss
+  reconstruction_weight: 1.0
+  l1_weight: 0.0
+  auxiliary_weight: ${model.args.alpha_aux}
+
+optimizer:
+  _target_: torch.optim.Adam
+  lr: 5e-5
+  betas: [0.9, 0.999]
+  weight_decay: 0.0

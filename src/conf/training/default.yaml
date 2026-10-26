@@ -1,0 +1,39 @@
+codetag: "alpha"
+
+seed: 42
+batch_size: 128
+
+trainer:
+  _target_: lightning.pytorch.Trainer
+  accelerator: auto
+  devices: auto
+  max_epochs: 5
+  precision: 16-mixed
+  log_every_n_steps: 10
+
+  logger:
+    - _target_: lightning.pytorch.loggers.CSVLogger
+      save_dir: "${hydra:runtime.output_dir}/logs"
+      name: "metrics"
+
+  callbacks:
+    - _target_: lightning.pytorch.callbacks.ModelCheckpoint
+      dirpath: "${hydra:runtime.output_dir}/checkpoints"
+      filename: "epoch={epoch}-val_loss={val/total_loss:.4f}"
+      auto_insert_metric_name: false
+      monitor: "val/total_loss"
+      mode: "min"
+      save_top_k: 3
+      save_last: true
+  
+    - _target_: lightning.pytorch.callbacks.EarlyStopping
+      monitor: "val/total_loss"
+      patience: 3
+      mode: "min"
+      verbose: true
+
+logging:
+  project_name: "modernbert-sae"
+  run_name: "${model.name}_${training.codetag}_L${dataset.layer_idx}"
+
+final_weights_path: "${oc.env:SAE_PROJECT_ROOT,${hydra:runtime.cwd}}/outputs/weights/${training.logging.run_name}/final_model.pt"

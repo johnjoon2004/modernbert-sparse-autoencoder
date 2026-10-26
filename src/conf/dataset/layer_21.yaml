@@ -1,0 +1,6 @@
+name: layer_21
+layer_idx: 21
+
+data_dir: ${oc.env:SAE_RS_DATA_DIR,${oc.env:SAE_PROJECT_ROOT,${hydra:runtime.cwd}}/data/post_mlp_residual_stream}/layer_21
+dtype: float32
+split_ratios: [0.9, 0.1, 0.0]

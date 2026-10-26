@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+* {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+[data-testid="column"] {
+    position: relative;
+    cursor: pointer;
+}
+
+a.module-card,
+a.submenu-item {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.module-card {
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    min-height: 360px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 2px 4px rgba(0, 0, 0, 0.03);
+    transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid rgba(0, 0, 0, 0.04);
+}
+
+.module-card:not(.disabled):not(.hoverable):hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12), 0 8px 16px rgba(0, 0, 0, 0.08);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.module-card.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(0.3);
+}
+
+.module-card.disabled:hover {
+    transform: none;
+}
+
+.card-content {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.card-icon {
+    font-size: 5.5rem;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.12));
+    transition: transform 0.3s ease;
+}
+
+.module-card:not(.disabled):hover .card-icon {
+    transform: scale(1.1);
+}
+
+.card-title {
+    font-size: 1.65rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin: 0;
+    letter-spacing: -0.03em;
+    line-height: 1.25;
+}
+
+.card-description {
+    font-size: 1rem;
+    font-weight: 400;
+    color: #475569;
+    line-height: 1.65;
+    margin: 0;
+    max-width: 280px;
+    letter-spacing: -0.01em;
+}
+
+.coming-soon-badge {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: rgba(0, 0, 0, 0.12);
+    color: #475569;
+    padding: 0.45rem 0.9rem;
+    border-radius: 24px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    backdrop-filter: blur(8px);
+}
+
+.module-card-container {
+    position: relative;
+}
+
+.module-card.hoverable {
+    transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+/* DEPRECATED - submenu */
+.submenu-popup {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 100;
+    min-width: 320px;
+}
+
+.module-card-container:hover .module-card.hoverable {
+    opacity: 0.2;
+    transform: translateY(-10px) scale(1.02);
+}
+
+.module-card-container:hover .submenu-popup {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.submenu-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.submenu-item:hover {
+    background-color: #f1f5f9;
+    transform: translateX(4px);
+}
+
+.submenu-icon {
+    font-size: 2rem;
+    flex-shrink: 0;
+}
+
+.submenu-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+}
+
+.submenu-desc {
+    font-size: 0.85rem;
+    color: #64748b;
+    line-height: 1.4;
+}
+
+h1 {
+    font-weight: 800;
+    color: #0f172a;
+    letter-spacing: -0.04em;
+    margin-bottom: 0.5rem;
+}
+
+.stMarkdown p {
+    font-size: 1.08rem;
+    color: #475569;
+    line-height: 1.75;
+    letter-spacing: -0.01em;
+}
+
+hr {
+    margin: 2.5rem 0;
+    border: none;
+    border-top: 1px solid #e2e8f0;
+}
+
+.block-container {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+    max-width: 1400px;
+}
+
+[data-testid="column"] {
+    padding: 0 0.75rem;
+}
+
+#MainMenu {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
+
+html {
+    scroll-behavior: smooth;
+}
